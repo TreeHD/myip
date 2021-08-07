@@ -3,7 +3,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://ipinsight.io/query?ip=$_SERVER["REMOTE_ADDR"]",
+  CURLOPT_URL => "https://ipinsight.io/query?ip=$_SERVER[REMOTE_ADDR]",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
