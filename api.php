@@ -3,7 +3,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://ipinsight.io/query?ip=1.1.1.1',
+  CURLOPT_URL => "https://ipinsight.io/query?ip=$_SERVER["REMOTE_ADDR"]",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -16,4 +16,4 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 
 curl_close($curl);
-echo json_encode($response);
+echo $response;
