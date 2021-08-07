@@ -20,6 +20,8 @@
         <div class="row">
             <div class="col-6 main">
                 <span id="ipv4"></span>
+                <span id="country_name"></span>
+                <span id="org_name"></span>
             </div>
         </div>
     </div>
@@ -27,18 +29,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js" integrity="sha512-PqRelaJGXVuQ81N6wjUrRQelCDR7z8RvKGiR9SbSxKHPIt15eJDmIVv9EJgwq0XvgylszsjzvQ0+VyI2WtIshQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        function renderIP(ip,country_name,org_name){
+            $("#ip").text(ip)
+            $("#country_name").text(country_name)
+            $("#org_name").text(org_name)
+        }
         function getIP(){
             $.ajax({
                 url:"api.php",
                 dataType: "json",
                 success: function(data){
                     //console.log(data)
+                    if(data["country_name"] == "China" & data["country_code"] == "TW"){
+                        data["country_name"] = "Taiwan"
+                    }
+
+                    renderIP(data.ip,data.country_name,data.asn.desc)
                 }
             })
         }
-        function renderIP(){
-            
-        }
+        
         
     </script>
 </body>
