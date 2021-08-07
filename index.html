@@ -30,6 +30,7 @@
         function getIP(){
             $.ajax({
                 url:"api.php",
+                dataType: "json",
                 success: function(data){
                     console.log(data)
                 }
